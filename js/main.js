@@ -11,9 +11,18 @@ app.controller('ImportCtrl', function($scope) {
 
     $scope.files = [];
 
-    $scope.addFile = function() {
-        console.log("boom");
-    };
+    $scope.import = function() {
+        for (var i = 0; i< $scope.files.length; i++) {
+            var file = $scope.files[i];
+            var fileReader = new FileReader();
+
+            fileReader.onload = function(e) {
+                console.log(fileReader.result);
+            }
+
+            fileReader.readAsText(file);
+        }
+    }
 
 });
 

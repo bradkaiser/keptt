@@ -24,7 +24,10 @@
         <div ng-controller="ImportCtrl" ng-show="selectedTab == 1">import tab
             <input type="file" class="files" name="files[]" multiple fileread="files"/>
             <div ng-repeat="file in files">{{file.name}}</div>
+            <button ng-click="import()">Import</button>
+            Student Count: {{students.length}}
         </div>
+
         <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
             <div ng-repeat="student in students">
                 student name = {{student}}
