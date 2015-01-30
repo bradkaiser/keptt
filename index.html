@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="grouper">
+    <head>
+        <meta charset=utf-8>
+        <title>Group Students</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.12.0.js"></script>
+        <script src="js/main.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <style>
+        </style>
+    </head>
+    <body ng-controller="MainCtrl">
+        <ol class="steps">
+            <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">Import Students</li>
+            <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">Teams</li>
+            <li ng-class="{active: selectedTab == 3}" ng-click="selectedTab = 3">Breakouts</li>
+            <li ng-class="{active: selectedTab == 4}" ng-click="selectedTab = 4">Bench Trials</li>
+            <li ng-class="{active: selectedTab == 5}" ng-click="selectedTab = 5">Jury Trials</li>
+        </ol>
+
+        <div ng-controller="ImportCtrl" ng-show="selectedTab == 1">import tab
+            <div ng-repeat="student in students">
+                student name = {{student}}
+            </div>
+        </div>
+        <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
+            <div ng-repeat="student in students">
+                student name = {{student}}
+            </div>
+        </div>
+        <div ng-show="selectedTab == 3">hello dogs</div>
+        <div ng-show="selectedTab == 4">hello barf</div>
+    </body>
+
+</html>
