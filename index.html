@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
         <style>
+.active { background: red; }
         </style>
     </head>
     <body ng-controller="MainCtrl">
@@ -21,9 +22,8 @@
         </ol>
 
         <div ng-controller="ImportCtrl" ng-show="selectedTab == 1">import tab
-            <div ng-repeat="student in students">
-                student name = {{student}}
-            </div>
+            <input type="file" class="files" name="files[]" multiple fileread="files"/>
+            <div ng-repeat="file in files">{{file.name}}</div>
         </div>
         <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
             <div ng-repeat="student in students">
