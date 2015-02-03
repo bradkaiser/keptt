@@ -5,6 +5,7 @@
         <title>Group Students</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
         <script src="js/ui-bootstrap-tpls-0.12.0.js"></script>
+        <script src="js/ng-lodash.min.js"></script>
         <script src="js/main.js"></script>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
@@ -25,12 +26,12 @@
             <input type="file" class="files" name="files[]" multiple fileread="files"/>
             <div ng-repeat="file in files">{{file.name}}</div>
             <button ng-click="import()">Import</button>
-            Student Count: {{students.length}}
+            Student Count: {{model.students.length}}
         </div>
 
         <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
-            <div ng-repeat="student in students">
-                student name = {{student}}
+            <div ng-repeat="team in model.teams" style="background: {{team.color}}">
+                team name = {{team.name}}
             </div>
         </div>
         <div ng-show="selectedTab == 3">hello dogs</div>
