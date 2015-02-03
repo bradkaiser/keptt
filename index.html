@@ -9,8 +9,11 @@
         <script src="js/main.js"></script>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/style.css">
         <style>
-.active { background: red; }
+.steps .active { background: red; }
+.team-list .active { color: white; }
+
         </style>
     </head>
     <body ng-controller="MainCtrl">
@@ -30,8 +33,15 @@
         </div>
 
         <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
-            <div ng-repeat="team in model.teams" style="background: {{team.color}}">
-                team name = {{team.name}}
+            <div class="team-list">
+                <div ng-repeat="team in model.teams" style="background: {{team.color}}"
+                                                     ng-click="model.selectedTeam = {{$index}}"
+                                                     ng-class="{active: model.selectedTeam == {{$index}}">
+                    team name = {{team.name}}
+                </div>
+            </div>
+            <div class="team-content">
+                {{model.selectedTeam}}
             </div>
         </div>
         <div ng-show="selectedTab == 3">hello dogs</div>

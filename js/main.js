@@ -3,7 +3,7 @@ var app = angular.module('grouper', ['ngLodash']);
 app.controller('MainCtrl', function($scope) {
     $scope.selectedTab = 1;
 
-    $scope.model = { students: ["doug","marcia","bill"],
+    $scope.model = { students: [],
                      teams: [ {name: "red", color: "#E74C3C"},
                              {name: "orange", color: "#E67E22"},
                              {name: "yellow", color: "#F1C40F"},
@@ -13,9 +13,18 @@ app.controller('MainCtrl', function($scope) {
                              {name: "purple", color: "#9B59B6"},
                              {name: "indigo", color: "#191970"},
                              {name: "grey", color: "#95A5A6"},
-                             {name: "pink", color: "#DB0A5B"}]
+                             {name: "pink", color: "#DB0A5B"}],
+                    selectedTeam: 0
+
 
     };
+
+    $scope.$watch( 
+            function() { return $scope.model.students; },
+            function(newValue, oldValue) {
+                console.log("students changed from " + oldValue.length + " to " + newValue.length);
+            });
+
 });
 
 
