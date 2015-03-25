@@ -53,7 +53,7 @@ app.controller('ImportCtrl', ['$scope', 'lodash', function($scope, _) {
     };
 }]);
 
-app.controller('TeamCtrl', function($scope) {
+app.controller('SetupGroupCtrl', function($scope) {
 });
 
 app.directive("fileread", function() {
