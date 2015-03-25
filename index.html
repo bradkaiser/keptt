@@ -32,16 +32,21 @@
         </div>
 
         <div ng-controller="TeamCtrl" ng-show="selectedTab == 2">team tab
-            <div class="team-list">
-                <div ng-repeat="team in model.teams" style="background: {{team.color}}"
-                                                     ng-click="model.selectedTeam = {{$index}}"
-                                                     ng-class="{active: model.selectedTeam == {{$index}}">
-                    team name = {{team.name}}
+            <form id="rule-form">
+                <h1>Grouping</h1>
+                <div>
+                    Do you want to set <button>Group Size</button> <button>number of groups</button>?
                 </div>
-            </div>
-            <div class="team-content">
-                {{model.selectedTeam}}
-            </div>
+                <div>
+                    Do you want to group by an attribute
+                    <select>
+                        <option>One</option>
+                        <option>Tow</option>
+                        <option>Three</option>
+                        <option>Four</option>
+                    </select>
+                </div>
+            </form>
         </div>
 
         <div ng-show="selectedTab == 3">hello dogs</div>
