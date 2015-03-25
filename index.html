@@ -18,11 +18,10 @@
     </head>
     <body ng-controller="MainCtrl">
         <ol class="steps">
-            <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">Import Students</li>
-            <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">Teams</li>
-            <li ng-class="{active: selectedTab == 3}" ng-click="selectedTab = 3">Breakouts</li>
-            <li ng-class="{active: selectedTab == 4}" ng-click="selectedTab = 4">Bench Trials</li>
-            <li ng-class="{active: selectedTab == 5}" ng-click="selectedTab = 5">Jury Trials</li>
+            <li ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">Import</li>
+            <li ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">Setup Groups</li>
+            <li ng-class="{active: selectedTab == 3}" ng-click="selectedTab = 3">Adjust</li>
+            <li ng-class="{active: selectedTab == 4}" ng-click="selectedTab = 4">Export</li>
         </ol>
 
         <div ng-controller="ImportCtrl" ng-show="selectedTab == 1">import tab
@@ -44,6 +43,7 @@
                 {{model.selectedTeam}}
             </div>
         </div>
+
         <div ng-show="selectedTab == 3">hello dogs</div>
         <div ng-show="selectedTab == 4">hello barf</div>
     </body>
