@@ -1,6 +1,6 @@
-var app = angular.module('grouper', ['ngLodash']);
+var app = angular.module('grouper', ['ngLodash', 'data']);
 
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', ['$scope', 'dataService', function($scope, dataService) {
     $scope.selectedTab = 1;
 
     $scope.model = { students: [],
@@ -25,7 +25,7 @@ app.controller('MainCtrl', function($scope) {
                 console.log("students changed from " + oldValue.length + " to " + newValue.length);
             });
 
-});
+}]);
 
 app.directive("fileread", function() {
     return {
