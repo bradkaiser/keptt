@@ -8,18 +8,25 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', function
     $scope.import = function() {
         _.forEach($scope.files, function(file) {
             var fileReader = new FileReader();
-
             fileReader.onload = function(e) {
                 $scope.$apply(function() {
-                    $scope.rawData = _(fileReader.result.split("\n"))
+                    var fileContents = _(fileReader.result.split("\n"))
                                     .map(function(line) { return line.split(",") })
                                     .value();
 
-                    $scope.files = [];
+                    if ($scope.hasHeader) {
+                        $scope.columns = fileContents.shift();
+                        $scope.rawData = fileContents;
+                    } else {
+                        $scope.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
+                        $scope.rawData = fileContents;
+                    }
                 });
             };
 
             fileReader.readAsText(file);
         });
+
+        $scope.files = [];
     };
 }]);
