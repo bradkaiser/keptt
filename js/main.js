@@ -1,4 +1,4 @@
-var app = angular.module('grouper', ['ngLodash', 'data']);
+var app = angular.module('grouper', ['ngLodash', 'data', 'ui.bootstrap']);
 
 app.controller('MainCtrl', ['$scope', function($scope) {
     $scope.selected = {'tab':  1};
@@ -21,4 +21,9 @@ app.directive("fileread", function() {
         }
     };
 });
+
+// Pop up for the page telling the user not to leave
+//window.onbeforeunload = function() {
+//    return "Refreshing or leaving this page will result in all current data being lost.";
+//}
 

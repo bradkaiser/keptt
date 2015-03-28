@@ -1,0 +1,30 @@
+.steps {
+    /*margin: auto;*/
+    /*width: 80%;*/
+    border: 1px solid black;
+    border-radius: 6px;
+    display: flex;
+    margin-top: 2%;
+}
+
+.step {
+    width:100%;
+    margin: auto;
+    text-align: center;
+    border-left: 1px solid black;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.step:first-child {
+    border-left: none;
+}
+
+
+.step.active { background: red; }
+
+.team-list .active { color: white; }
+
+.tab-data {
+    margin-top:25px;
+}
