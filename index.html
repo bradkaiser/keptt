@@ -7,6 +7,14 @@
         <link rel="stylesheet" href="css/bootstrap-theme.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
+        <script src="lib/ui-bootstrap-tpls-0.12.0.js"></script>
+        <script src="lib/ng-lodash.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/dataService.js"></script>
+        <script src="js/importCtrl.js"></script>
+        <script src="js/setupGroupCtrl.js"></script>
+        <script src="js/adjustGroupCtrl.js"></script>
     </head>
     <body ng-controller="MainCtrl">
         <div class="container">
@@ -18,30 +26,23 @@
             </div>
             the selected tab is {{selected.tab}}
 
-            <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">import tab
-                <ng-include src="'pages/import.html'"></ng-include>
-            </div>
+            <div ng-controller="ImportCtrl" ng-show="selected.tab == 1">
 
-            <div class="tab-data"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 2">team tab
-                <ng-include src="'pages/setup.html'"></ng-include>
-            </div>
+                <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">import tab
+                    <ng-include src="'pages/import.html'"></ng-include>
+                </div>
 
-            <div class="tab-data" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 3">
-                <ng-include src="'pages/adjust.html'"></ng-include>
+                <div class="tab-data"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 2">team tab
+                    <ng-include src="'pages/setup.html'"></ng-include>
+                </div>
+
+                <div class="tab-data" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 3">
+                    <ng-include src="'pages/adjust.html'"></ng-include>
+                </div>
+                <div class="tab-data" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 4">
+                    <ng-include src="'pages/export.html'"></ng-include>
+                </div>
             </div>
-            <div class="tab-data" ng-controller="SetupGroupCtrl" ng-show="selected.tab == 4">
-                <ng-include src="'pages/export.html'"></ng-include>
-            </div>
-        </div>
-        <div id="scripts">
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js"></script>
-            <script src="lib/ui-bootstrap-tpls-0.12.0.js"></script>
-            <script src="lib/ng-lodash.min.js"></script>
-            <script src="js/main.js"></script>
-            <script src="js/dataService.js"></script>
-            <script src="js/importCtrl.js"></script>
-            <script src="js/setupGroupCtrl.js"></script>
-            <script src="js/adjustGroupCtrl.js"></script>
         </div>
     </body>
 </html>

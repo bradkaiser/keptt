@@ -22,7 +22,9 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataSer
                         $scope.model.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
                     }
 
+                    console.log(fileContents);
                     $scope.model.data = _.map(fileContents, convertDatumArrayToObject);
+                    console.log($scope.model.data);
                 });
             };
 
