@@ -55,7 +55,16 @@
             <input type="file" class="files" name="files[]" multiple fileread="files"/>
             <div ng-repeat="file in files">{{file.name}}</div>
             <button ng-click="import()">Import</button>
-            Student Count: {{model.students.length}}
+
+            <div ng-show="rawData.length == 0">
+                Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+            </div>
+
+            <table ng-show="rawData.length > 0">
+                <tr ng-repeat="row in rawData">
+                    <td ng-repeat="cell in row">{{cell}}</td>
+                </tr>
+            </table>
         </div>
 
         <div ng-controller="SetupGroupCtrl" ng-show="selectedTab == 2">team tab
