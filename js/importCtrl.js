@@ -1,9 +1,11 @@
 angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataService', function($scope, _, dataService) {
 
     $scope.files = [];
-    $scope.rawData = [];
     $scope.hasHeader = true;
-    $scope.columns = [];
+
+    var convertDatumArrayToObject = function(datum) {
+        return _.zipObject($scope.model.columns, datum);
+    };
 
     $scope.import = function() {
         _.forEach($scope.files, function(file) {
@@ -15,12 +17,12 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataSer
                                     .value();
 
                     if ($scope.hasHeader) {
-                        $scope.columns = fileContents.shift();
-                        $scope.rawData = fileContents;
+                        $scope.model.columns = fileContents.shift();
                     } else {
-                        $scope.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
-                        $scope.rawData = fileContents;
+                        $scope.model.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
                     }
+
+                    $scope.model.data = _.map(fileContents, convertDatumArrayToObject);
                 });
             };
 
@@ -30,12 +32,8 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataSer
         $scope.files = [];
     };
 
-    var convertDatumArrayToObject = function(datum) {
-        return _.zipObject($scope.columns, datum);
-    };
 
     $scope.next = function() {
-        dataService.setItems(_.map($scope.rawData, convertDatumArrayToObject));
         $scope.selected.tab++;
     };
 

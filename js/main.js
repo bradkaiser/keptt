@@ -2,6 +2,7 @@ var app = angular.module('grouper', ['ngLodash', 'data']);
 
 app.controller('MainCtrl', ['$scope', function($scope) {
     $scope.selected = {'tab':  1};
+    $scope.model = { data: [], columns: [] };
 }]);
 
 app.directive("fileread", function() {

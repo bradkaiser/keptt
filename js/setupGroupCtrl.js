@@ -5,7 +5,8 @@ angular.module('grouper')
         $scope.groupingAttribute = "";
 
         $scope.test = function() {
-            console.log(dataService.getItems());
+            console.log($scope.model.data);
+            console.log($scope.model.columns);
         };
 }]);
 
