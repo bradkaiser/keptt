@@ -1,4 +1,4 @@
-angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', function($scope, _) {
+angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataService', function($scope, _, dataService) {
 
     $scope.files = [];
     $scope.rawData = [];
@@ -29,4 +29,15 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', function
 
         $scope.files = [];
     };
+
+    var convertDatumArrayToObject = function(datum) {
+        return _.zipObject($scope.columns, datum);
+    };
+
+    $scope.next = function() {
+        dataService.setItems(_.map($scope.rawData, convertDatumArrayToObject));
+        $scope.selected.tab++;
+    };
+
+
 }]);

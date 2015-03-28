@@ -1,9 +1,7 @@
 var app = angular.module('grouper', ['ngLodash', 'data']);
 
-app.controller('MainCtrl', ['$scope', 'dataService', function($scope, dataService) {
-    $scope.selectedTab = 1;
-
-
+app.controller('MainCtrl', ['$scope', function($scope) {
+    $scope.selected = {'tab':  1};
 }]);
 
 app.directive("fileread", function() {

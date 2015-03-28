@@ -7,9 +7,9 @@
         <script src="lib/ui-bootstrap-tpls-0.12.0.js"></script>
         <script src="lib/ng-lodash.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/dataService.js"></script>
         <script src="js/importCtrl.js"></script>
         <script src="js/setupGroupCtrl.js"></script>
-        <script src="js/dataService.js"></script>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
         <link rel="stylesheet" href="css/style.css">
@@ -45,13 +45,14 @@
     </head>
     <body ng-controller="MainCtrl">
         <div class="steps">
-            <div class="step" ng-class="{active: selectedTab == 1}" ng-click="selectedTab = 1">Import</div>
-            <div class="step" ng-class="{active: selectedTab == 2}" ng-click="selectedTab = 2">Setup Groups</div>
-            <div class="step" ng-class="{active: selectedTab == 3}" ng-click="selectedTab = 3">Adjust</div>
-            <div class="step" ng-class="{active: selectedTab == 4}" ng-click="selectedTab = 4">Export</div>
+            <div class="step" ng-class="{active: selected.tab == 1}" ng-click="selected.tab = 1">Import</div>
+            <div class="step" ng-class="{active: selected.tab == 2}" ng-click="selected.tab = 2">Setup Groups</div>
+            <div class="step" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</div>
+            <div class="step" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</div>
         </div>
+        the selected tab is {{selected.tab}}
 
-        <div ng-controller="ImportCtrl" ng-show="selectedTab == 1">import tab
+        <div ng-controller="ImportCtrl" ng-show="selected.tab == 1">import tab
             <input type="file" class="files" name="files[]" multiple fileread="files"/>
             <div ng-repeat="file in files">{{file.name}}</div>
             <button ng-click="import()">Import</button>
@@ -68,9 +69,12 @@
                     <td ng-repeat="cell in row">{{cell}}</td>
                 </tr>
             </table>
+
+            <button ng-click="next()">next</button>
         </div>
 
-        <div ng-controller="SetupGroupCtrl" ng-show="selectedTab == 2">team tab
+        <div ng-controller="SetupGroupCtrl" ng-show="selected.tab == 2">team tab
+            <button ng-click="test()">test</button>
             <form id="rule-form">
                 <h1>Grouping</h1>
                 <div>
@@ -88,8 +92,8 @@
             </form>
         </div>
 
-        <div ng-show="selectedTab == 3">hello dogs</div>
-        <div ng-show="selectedTab == 4">hello barf</div>
+        <div ng-show="selected.tab == 3">hello dogs</div>
+        <div ng-show="selected.tab == 4">hello barf</div>
     </body>
 
 </html>
