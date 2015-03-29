@@ -1,30 +1,32 @@
 var app = angular.module('data', []);
 
-app.factory('dataService', function() {
+app.constant('_', window._);
+app.run(function($rootScope) {
+    $rootScope._ = window._;
+});
+
+app.factory('dataService', ['_', function(_) {
     var service = {};
 
-    var items = [];
-    var columns = [];
-
-    service.setItems = function(data) {
-        items = data;
-    };
-
-    service.getItems = function() {
-        return items;
-    };
-
-    service.setColumns = function(data) {
-        columns = data;
-    };
-
-    service.getColumns = function() {
-        return columns;
+    service.splitGroups = function(data, attribute, elementsPerGroup) {
+        console.log("lodash is below");
+        console.log(_);
+        console.log(data);
+        console.log(attribute);
+        console.log(elementsPerGroup);
+        return _(data)
+                .sortByAll([attribute])
+                .chunk(elementsPerGroup)
+                .transform(function(result,group, index) {
+                    var groupName = 'Group' + index;
+                    result[groupName] = group;
+                }, {})
+                .value();
     };
 
     return service;
 
-});
+}]);
 
 
 

@@ -1,4 +1,4 @@
-angular.module('grouper').controller('ImportCtrl', ['$scope', 'lodash', 'dataService', function($scope, _, dataService) {
+angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService', function($scope, _, dataService) {
 
     $scope.files = [];
     $scope.hasHeader = true;
