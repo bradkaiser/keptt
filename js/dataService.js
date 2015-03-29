@@ -23,7 +23,12 @@ app.factory('dataService', ['_', function(_) {
                 }, {})
                 .value();
     };
-
+    
+    service.balanceGroups = function(data, attribute, numberOfGroups) {
+	console.log(data);
+	console.log(attribute);
+	console.log(numberOfGroups);
+    };
     return service;
 
 }]);
