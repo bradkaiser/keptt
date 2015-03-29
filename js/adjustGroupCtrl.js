@@ -1,7 +1,7 @@
 angular.module('grouper')
     .controller('AdjustGroupCtrl', ['$scope', 'dataService', function($scope, dataService) {
 
-        $scope.layout = 1; //0 == list, 1 == visual
+        $scope.layout = 0; //0 == list, 1 == visual
         $scope.selectedGroup = 0;
         $scope.groups = [["one", "two", "three", "four"],["five", "six", "seven", "eight"]];
 

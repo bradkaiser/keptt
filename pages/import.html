@@ -1,17 +1,24 @@
-<input type="file" class="files" name="files[]" multiple fileread="files"/>
-<div ng-repeat="file in files">{{file.name}}</div>
-<div ng-show="files.length > 0">
-    Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+<div class="row">
+    <div class="col-md-12">
+        <input type="file" class="files" name="files[]" multiple fileread="files"/>
+        <div ng-repeat="file in files">{{file.name}}</div>
+        <div ng-show="files.length > 0">
+            Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+        </div>
+        <button ng-click="import()">Import</button>
+
+        <table ng-show="model.data.length > 0">
+            <tr>
+                <th ng-repeat="column in model.columns">{{column}}</th>
+            </tr>
+            <tr ng-repeat="row in model.data">
+                <td ng-repeat="cell in row">{{cell}}</td>
+            </tr>
+        </table>
+    </div>
 </div>
-<button ng-click="import()">Import</button>
-
-<table ng-show="model.data.length > 0">
-    <tr>
-        <th ng-repeat="column in model.columns">{{column}}</th>
-    </tr>
-    <tr ng-repeat="row in model.data">
-        <td ng-repeat="cell in row">{{cell}}</td>
-    </tr>
-</table>
-
-<button ng-click="next()">next</button>
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
+    </div>
+</div>

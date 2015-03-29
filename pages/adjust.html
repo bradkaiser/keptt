@@ -1,6 +1,9 @@
 <div class="row">
-    <div class="col-md-2 col-md-offset-10 pull-right">
-        <div class="btn-group">
+    <div class="col-md-8">
+        <h4>Adjust groups by dragging names between them</h4>
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group pull-right">
             <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 0">
                 <i class="fa fa-align-justify"></i>
             </button>
@@ -15,7 +18,7 @@
     <div class="tab-data" ng-show="layout == 0">
         <div class="col-md-3" >
             <div ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)"
-                 ng-class="{active: selectedGroup == gIndex}" ng-click="test($index)">Group {{gIndex}}</div>
+                 ng-class="{active: selectedGroup = gIndex}" ng-click="test(gIndex)">Group {{gIndex}}</div>
         </div>
         <div class="col-md-9">
             <table border="1">
@@ -39,3 +42,11 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-default" ng-click="back()">Back</button>
+        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
+    </div>
+</div>
+
+

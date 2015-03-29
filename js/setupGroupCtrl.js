@@ -28,8 +28,7 @@ angular.module('grouper')
             } else {
                 //do nothing for now
             }
-
-            $scope.selected.tab++;
+            $scope.$parent.next();
         };
 }]);
 

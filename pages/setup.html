@@ -1,28 +1,36 @@
-<button ng-click="test()">test</button>
-<form id="rule-form">
-    <h1>Grouping</h1>
-    <div>
-        Do you want to set
-        <input type="radio" ng-model="grouping.method" value="{{groupingMethods.groupSize}}">Group Size</input>
-        <input type="radio" ng-model="grouping.method" value="{{groupingMethods.numberGroup}}">Number of Groups</input>
+<div class="row">
+    <div class="col-md-12">
+        <button ng-click="test()">test</button>
+        <form id="rule-form">
+            <h1>Grouping</h1>
+            <div>
+                Do you want to set
+                <input type="radio" ng-model="grouping.method" value="{{groupingMethods.groupSize}}">Group Size</input>
+                <input type="radio" ng-model="grouping.method" value="{{groupingMethods.numberGroup}}">Number of Groups</input>
+            </div>
+
+            <div ng-show="grouping.method == groupingMethods.numberGroup">number of groups <input ng-model="grouping.numberOfGroups" type="text"></div>
+            <div ng-show="grouping.method == groupingMethods.groupSize">group size<input ng-model="grouping.groupSize" type="text"></div>
+
+            <div ng-show="grouping.numberOfGroups != null || grouping.groupSize != null">
+                Do you want to group by an attribute
+                <select ng-model="grouping.attribute">
+                    <option ng-repeat="column in model.columns" value="{{column}}">{{column}}</option>
+                </select>
+            </div>
+
+            <div ng-show="grouping.attribute">
+                split on attribute
+                <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.split}}">
+                balance attribute
+                <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.balance}}">
+            </div>
+        </form>
     </div>
-
-    <div ng-show="grouping.method == groupingMethods.numberGroup">number of groups <input ng-model="grouping.numberOfGroups" type="text"></div>
-    <div ng-show="grouping.method == groupingMethods.groupSize">group size<input ng-model="grouping.groupSize" type="text"></div>
-
-    <div ng-show="grouping.numberOfGroups != null || grouping.groupSize != null">
-        Do you want to group by an attribute
-        <select ng-model="grouping.attribute">
-            <option ng-repeat="column in model.columns" value="{{column}}">{{column}}</option>
-        </select>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-default" ng-click="back()">Back</button>
+        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
     </div>
-
-    <div ng-show="grouping.attribute">
-        split on attribute
-        <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.split}}">
-        balance attribute
-        <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.balance}}">
-    </div>
-
-    <button ng-click="next()">next</button>
-</form>
+</div>
