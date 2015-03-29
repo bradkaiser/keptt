@@ -1,4 +1,4 @@
-var app = angular.module('grouper', ['ui.bootstrap', 'ngLodash', 'data']);
+var app = angular.module('grouper', ['ui.bootstrap', 'ngLodash', 'data', 'ngDraggable']);
 
 app.controller('MainCtrl', ['$scope', function($scope) {
     $scope.selected = {'tab':  3};
