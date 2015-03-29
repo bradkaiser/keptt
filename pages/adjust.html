@@ -4,10 +4,10 @@
     </div>
     <div class="col-md-4">
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 0">
+            <button type="button" class="btn btn-default" ng-class="{active: layout == 0}" ng-click="layout = 0">
                 <i class="fa fa-align-justify"></i>
             </button>
-            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 1">
+            <button type="button" class="btn btn-default" ng-class="{active: layout == 1}" ng-click="layout = 1">
                 <i class="fa fa-trello"></i>
             </button>
         </div>
@@ -23,9 +23,12 @@
             </ul>
         </div>
         <div class="col-md-9">
-            <div class="panel panel-default">
+            <div id="group-panel" class="panel panel-default">
                 <div class="panel-footer">
-                    <table border="1">
+                    <h3>Group Name:</h3>
+                    <input type="text" />
+                    <h3>Group Members:</h3>
+                    <table class="table table-bordered table-hover">
                         <th>Column Name</th>
                         <tr ng-repeat="(iIndex, item) in groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
                             <td>{{item}}</td>
@@ -38,8 +41,8 @@
 
     <!--visual layout-->
     <div ng-show="layout == 1">
-        <div class="col-md-12">
-            <table ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)" border="1">
+        <div class="col-md-3" ng-repeat="(gIndex, group) in groups">
+            <table class="table table-bordered table-hover" ng-drop="true" ng-drop-success="onDropComplete($data, $event, gIndex)">
                 <th>Column Name</th>
                 <tr ng-repeat="(iIndex, item) in group" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
                     <td>{{item}}</td>
@@ -50,8 +53,8 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <button type="button" class="btn btn-primary" ng-click="back()">Back</button>
-        <button type="button" class="btn btn-primary pull-right" ng-click="next()">Next</button>
+        <button type="button" class="btn btn-default" ng-click="back()">Back</button>
+        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
     </div>
 </div>
 

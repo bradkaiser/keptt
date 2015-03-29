@@ -12,6 +12,14 @@
     margin-top: 25px;
 }
 
+#group-panel table {
+    background: white;
+}
+
+#group-panel .panel-footer {
+    border-top: none
+}
+
 .steps {
     /*margin: auto;*/
     /*width: 80%;*/
