@@ -13,25 +13,31 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row margin-above-below">
     <!--list layout-->
-    <div class="tab-data" ng-show="layout == 0">
+    <div ng-show="layout == 0">
         <div class="col-md-3" >
-            <div ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)"
-                 ng-class="{active: selectedGroup = gIndex}" ng-click="test(gIndex)">Group {{gIndex}}</div>
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" ng-drop="true" ng-repeat="(gIndex, group) in groups"  ng-drop-success="onDropComplete($data, $event, gIndex)"
+                    ng-class="{active: selectedGroup == gIndex}" ng-click="test(gIndex)"><a href="#">Group {{gIndex}}</a></li>
+            </ul>
         </div>
         <div class="col-md-9">
-            <table border="1">
-                <th>Column Name</th>
-                <tr ng-repeat="(iIndex, item) in groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
-                    <td>{{item}}</td>
-                </tr>
-            </table>
+            <div class="panel panel-default">
+                <div class="panel-footer">
+                    <table border="1">
+                        <th>Column Name</th>
+                        <tr ng-repeat="(iIndex, item) in groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
+                            <td>{{item}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <!--visual layout-->
-    <div class="tab-data" ng-show="layout == 1">
+    <div ng-show="layout == 1">
         <div class="col-md-12">
             <table ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)" border="1">
                 <th>Column Name</th>
@@ -44,8 +50,8 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <button type="button" class="btn btn-default" ng-click="back()">Back</button>
-        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
+        <button type="button" class="btn btn-primary" ng-click="back()">Back</button>
+        <button type="button" class="btn btn-primary pull-right" ng-click="next()">Next</button>
     </div>
 </div>
 

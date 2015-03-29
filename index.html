@@ -4,7 +4,6 @@
         <meta charset=utf-8>
         <title>Group Students</title>
         <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/bootstrap-theme.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
@@ -20,11 +19,24 @@
     </head>
     <body ng-controller="MainCtrl">
         <div class="container">
-            <div class="steps">
-                <div class="step" ng-class="{active: selected.tab == 1}" ng-click="selected.tab = 1">Import</div>
-                <div class="step" ng-class="{active: selected.tab == 2}" ng-click="selected.tab = 2">Setup Groups</div>
-                <div class="step" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</div>
-                <div class="step" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</div>
+            <!--<div class="steps">-->
+                <!--<div class="step" ng-class="{active: selected.tab == 1}" ng-click="selected.tab = 1">Import</div>-->
+                <!--<div class="step" ng-class="{active: selected.tab == 2}" ng-click="selected.tab = 2">Setup Groups</div>-->
+                <!--<div class="step" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</div>-->
+                <!--<div class="step" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</div>-->
+            <!--</div>-->
+            <div class="row top-nav">
+                <div class="col-md-12">
+                    <div class="btn-group btn-group-lg btn-group-justified">
+                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1}" ng-click="selected.tab = 1">Import</a>
+                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2}" ng-click="selected.tab = 2">Setup Groups</a>
+                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</a>
+                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>
+                    </div>
+                </div>
+                <!--<div class="col-md-2 pull-right">-->
+                    <!--<a href="#" class="btn btn-lg btn-primary btn-block" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
+                <!--</div>-->
             </div>
             <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">
                 <ng-include src="'pages/import.html'"></ng-include>

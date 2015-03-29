@@ -1,3 +1,17 @@
+.top-nav {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.margin-above-below {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.bottom-nav {
+    margin-top: 25px;
+}
+
 .steps {
     /*margin: auto;*/
     /*width: 80%;*/
@@ -24,9 +38,7 @@
 
 .team-list .active { color: white; }
 
-.tab-data {
-    margin-top:25px;
-}
+.tab-data {}
 
 [ng-drag]{
     -moz-user-select: -moz-none;
