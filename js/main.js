@@ -1,7 +1,7 @@
 var app = angular.module('grouper', ['ui.bootstrap', 'ngLodash', 'data']);
 
 app.controller('MainCtrl', ['$scope', function($scope) {
-    $scope.selected = {'tab':  1};
+    $scope.selected = {'tab':  3};
     $scope.model = { data: [], columns: [] };
 }]);
 

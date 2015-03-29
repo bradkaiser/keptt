@@ -5,9 +5,10 @@
         <title>Group Students</title>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
         <script src="lib/ng-lodash.min.js"></script>
         <script src="js/main.js"></script>
@@ -25,22 +26,19 @@
                 <div class="step" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</div>
                 <div class="step" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</div>
             </div>
-            the selected tab is {{selected.tab}}
+            <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">import tab
+                <ng-include src="'pages/import.html'"></ng-include>
+            </div>
 
-                <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">import tab
-                    <ng-include src="'pages/import.html'"></ng-include>
-                </div>
+            <div class="tab-data"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 2">team tab
+                <ng-include src="'pages/setup.html'"></ng-include>
+            </div>
 
-                <div class="tab-data"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 2">team tab
-                    <ng-include src="'pages/setup.html'"></ng-include>
-                </div>
-
-                <div class="tab-data" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 3">
-                    <ng-include src="'pages/adjust.html'"></ng-include>
-                </div>
-                <div class="tab-data" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 4">
-                    <ng-include src="'pages/export.html'"></ng-include>
-                </div>
+            <div class="tab-data" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 3">
+                <ng-include src="'pages/adjust.html'"></ng-include>
+            </div>
+            <div class="tab-data" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 4">
+                <ng-include src="'pages/export.html'"></ng-include>
             </div>
         </div>
     </body>

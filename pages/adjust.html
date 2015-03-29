@@ -1,5 +1,41 @@
+<div class="row">
+    <div class="col-md-2 col-md-offset-10 pull-right">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 0">
+                <i class="fa fa-align-justify"></i>
+            </button>
+            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 1">
+                <i class="fa fa-trello"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <!--list layout-->
+    <div class="tab-data" ng-show="layout == 0">
+        <div class="col-md-3" >
+            <div ng-repeat="group in groups" ng-class="{active: selected.tab == $index}" ng-click="test($index)">Group {{$index}}</div>
+        </div>
+        <div class="col-md-9">
+            <table border="1">
+                <th>Column Name</th>
+                <tr ng-repeat="name in groups[selectedGroup]">
+                    <td>{{name}}</td>
+                </tr>
+            </table>
 
-<tabset vertical="true" type="pills">
-    <tab heading="Vertical 1">Vertical content 1</tab>
-    <tab heading="Vertical 2">Vertical content 2</tab>
-</tabset>
+        </div>
+    </div>
+
+    <!--visual layout-->
+    <div class="tab-data" ng-show="layout == 1">
+        <div class="col-md-12">
+            <table ng-repeat="group in groups" border="1">
+                <th>Column Name</th>
+                <tr ng-repeat="name in group">
+                    <td>{{name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
