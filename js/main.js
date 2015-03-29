@@ -1,4 +1,4 @@
-var app = angular.module('grouper', ['ui.bootstrap', 'data']);
+var app = angular.module('grouper', ['ui.bootstrap', 'data', 'ngDraggable']);
 
 app.constant('_', window._);
 app.run(function($rootScope) {
