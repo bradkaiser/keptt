@@ -28,6 +28,7 @@ app.factory('dataService', ['_', function(_) {
 	console.log(data);
 	console.log(attribute);
 	console.log(numberOfGroups);
+	return "In Progress";
     };
     return service;
 

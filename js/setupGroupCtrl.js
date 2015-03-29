@@ -14,8 +14,8 @@ angular.module('grouper')
         $scope.next = function() {
             var ags = $scope.attributeGroupingStrategies;
             var gm = $scope.groupingMethods;
-	
-            if ($scope.grouping.strategy = ags.split) {
+            
+	    if ($scope.grouping.strategy == ags.split) {
                 var elementsPerGroup;
 
                 if ($scope.grouping.method === gm.groupSize) {
@@ -25,10 +25,13 @@ angular.module('grouper')
                 }
 
                 $scope.model.groups = dataService.splitGroups($scope.model.data, $scope.grouping.attribute, elementsPerGroup);
-            } else if ($scope.grouping.strategy = ags.balance) {
-
-		if ($scope.grouping.method === gm.groupNumber) {		
-		    $scope.model.groups = dataService.balanceGroups($scope.model.data, $scope.grouping.attribute, $scope.grouping.numberOfGroups);		
+            } else if ($scope.grouping.strategy == ags.balance) {
+		var test;
+		console.log($scope.grouping.method);
+		console.log(gm.numberGroup);
+		if ($scope.grouping.method === gm.numberGroup) {		
+		    test = dataService.balanceGroups($scope.model.data, $scope.grouping.attribute, $scope.grouping.numberOfGroups);	
+		    console.log(test);	
 		} else {
 			//No Heuristic thought of, right now
 		}

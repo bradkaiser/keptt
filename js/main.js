@@ -6,7 +6,7 @@ app.run(function($rootScope) {
 });
 
 app.controller('MainCtrl', ['$scope', function($scope) {
-    $scope.selected = {'tab':  3};
+    $scope.selected = {'tab':  1};
     $scope.model = { data: [], columns: [] };
 
     $scope.back = function() {
