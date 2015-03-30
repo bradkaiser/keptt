@@ -19,20 +19,20 @@
         <div class="col-md-2" >
             <ul class="nav nav-pills nav-stacked">
                 <li role="presentation" ng-drop="true" ng-repeat="(gIndex, group) in model.groups"  ng-drop-success="onDropComplete($data, $event, gIndex)"
-                    ng-class="{active: selectedGroup == gIndex}" ng-click="test(gIndex)"><a href="#">{{gIndex}}</a></li>
+                    ng-class="{active: selectedGroup == gIndex}" ng-click="test(gIndex)"><a href="#" ng-bind="group.name"></a></li>
             </ul>
         </div>
         <div class="col-md-10">
             <div id="group-panel" class="panel panel-default">
                 <div class="panel-footer">
                     <h3>Group Name:</h3>
-                    <input type="text" ngBind="model.groupsselectedGroup" />
+                    <input type="text" ng-model="model.groups[selectedGroup].name" />
                     <h3>Group Members:</h3>
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th ng-repeat="header in model.columns">{{header}}</th>
                         </tr>
-                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
+                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
                             <td ng-repeat="(key, val) in item">{{val}}</td>
                         </tr>
                     </table>
@@ -45,8 +45,8 @@
     <div ng-show="layout == 1">
         <div class="col-md-3" ng-repeat="(gIndex, group) in model.groups">
             <table class="table table-bordered table-hover" ng-drop="true" ng-drop-success="onDropComplete($data, $event, gIndex)">
-                <th>{{gIndex}}</th>
-                <tr ng-repeat="(iIndex, item) in group" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
+                <th>{{group.name}}</th>
+                <tr ng-repeat="(iIndex, item) in group.items" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
                     <td>{{item[model.columns[0]]}}</td>
                 </tr>
             </table>
