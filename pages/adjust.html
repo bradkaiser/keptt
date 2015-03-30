@@ -4,36 +4,45 @@
     </div>
     <div class="col-md-4">
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 0">
+            <button type="button" class="btn btn-default" ng-class="{active: layout == 0}" ng-click="layout = 0">
                 <i class="fa fa-align-justify"></i>
             </button>
-            <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="layout = 1">
+            <button type="button" class="btn btn-default" ng-class="{active: layout == 1}" ng-click="layout = 1">
                 <i class="fa fa-trello"></i>
             </button>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row margin-above-below">
     <!--list layout-->
-    <div class="tab-data" ng-show="layout == 0">
+    <div ng-show="layout == 0">
         <div class="col-md-3" >
-            <div ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)"
-                 ng-class="{active: selectedGroup = gIndex}" ng-click="test(gIndex)">Group {{gIndex}}</div>
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" ng-drop="true" ng-repeat="(gIndex, group) in groups"  ng-drop-success="onDropComplete($data, $event, gIndex)"
+                    ng-class="{active: selectedGroup == gIndex}" ng-click="test(gIndex)"><a href="#">Group {{gIndex}}</a></li>
+            </ul>
         </div>
         <div class="col-md-9">
-            <table border="1">
-                <th>Column Name</th>
-                <tr ng-repeat="(iIndex, item) in groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
-                    <td>{{item}}</td>
-                </tr>
-            </table>
+            <div id="group-panel" class="panel panel-default">
+                <div class="panel-footer">
+                    <h3>Group Name:</h3>
+                    <input type="text" />
+                    <h3>Group Members:</h3>
+                    <table class="table table-bordered table-hover">
+                        <th>Column Name</th>
+                        <tr ng-repeat="(iIndex, item) in groups[selectedGroup]" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
+                            <td>{{item}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <!--visual layout-->
-    <div class="tab-data" ng-show="layout == 1">
-        <div class="col-md-12">
-            <table ng-drop="true" ng-repeat="(gIndex, group) in groups" ng-drop-success="onDropComplete($data, $event, gIndex)" border="1">
+    <div ng-show="layout == 1">
+        <div class="col-md-3" ng-repeat="(gIndex, group) in groups">
+            <table class="table table-bordered table-hover" ng-drop="true" ng-drop-success="onDropComplete($data, $event, gIndex)">
                 <th>Column Name</th>
                 <tr ng-repeat="(iIndex, item) in group" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
                     <td>{{item}}</td>
