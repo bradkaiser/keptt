@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
         <script src="lib/ngDraggable.js"></script>
         <script src="js/main.js"></script>
@@ -26,17 +26,17 @@
                 <!--<div class="step" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</div>-->
             <!--</div>-->
             <div class="row top-nav">
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="btn-group btn-group-lg btn-group-justified">
                         <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1}" ng-click="selected.tab = 1">Import</a>
                         <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2}" ng-click="selected.tab = 2">Setup Groups</a>
                         <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 3}" ng-click="selected.tab = 3">Adjust</a>
-                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>
+                        <!--<a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
                     </div>
                 </div>
-                <!--<div class="col-md-2 pull-right">-->
-                    <!--<a href="#" class="btn btn-lg btn-primary btn-block" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
-                <!--</div>-->
+                <div class="col-md-3">
+                    <a href="#" class="btn btn-lg btn-primary btn-block" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>
+                </div>
             </div>
             <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 1">
                 <ng-include src="'pages/import.html'"></ng-include>

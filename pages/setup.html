@@ -3,27 +3,49 @@
         <button ng-click="test()">test</button>
         <form id="rule-form">
             <h1>Grouping</h1>
-            <div>
-                Do you want to set
-                <input type="radio" ng-model="grouping.method" value="{{groupingMethods.groupSize}}">Group Size</input>
-                <input type="radio" ng-model="grouping.method" value="{{groupingMethods.numberGroup}}">Number of Groups</input>
+            <div class="row">
+                <div class="col-md-2">
+                    Do you want to set
+                </div>
+                <div class="col-md-4">
+                    <div class="btn-group btn-group-justified">
+                        <a href="#" class="btn btn-default" ng-class="{active: grouping.method == groupingMethods.groupSize}" ng-click="grouping.method = groupingMethods.groupSize">Group Size</a>
+                        <a href="#" class="btn btn-default" ng-class="{active: grouping.method == groupingMethods.numberGroup}" ng-click="grouping.method = groupingMethods.numberGroup">Number of Groups</a>
+                    </div>
+                </div>
             </div>
-
-            <div ng-show="grouping.method == groupingMethods.numberGroup">number of groups <input ng-model="grouping.numberOfGroups" type="text"></div>
-            <div ng-show="grouping.method == groupingMethods.groupSize">group size<input ng-model="grouping.groupSize" type="text"></div>
-
-            <div ng-show="grouping.numberOfGroups != null || grouping.groupSize != null">
-                Do you want to group by an attribute
-                <select ng-model="grouping.attribute">
-                    <option ng-repeat="column in model.columns" value="{{column}}">{{column}}</option>
-                </select>
+            <br/><br/>
+            <div class="row">
+                <div class="col-md-2">
+                    <span ng-show="grouping.method == groupingMethods.numberGroup">Number of groups: </span>
+                    <span ng-show="grouping.method == groupingMethods.groupSize">Group size: </span>
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control text-right" ng-show="grouping.method == groupingMethods.numberGroup"ng-model="grouping.numberOfGroups" type="text">
+                    <input class="form-control text-right" ng-show="grouping.method == groupingMethods.groupSize"ng-model="grouping.groupSize" type="text">
+                </div>
             </div>
-
-            <div ng-show="grouping.attribute">
-                split on attribute
-                <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.split}}">
-                balance attribute
-                <input type="radio" ng-model="grouping.strategy" value="{{attributeGroupingStrategies.balance}}">
+            <br/><br/>
+            <div class="row" ng-show="grouping.numberOfGroups != null || grouping.groupSize != null">
+                <div class="col-md-2">
+                    Do you want to group by an attribute
+                </div>
+                <div class="col-md-2 col-md-offset-2">
+                    <select class="form-control" ng-model="grouping.attribute">
+                        <option ng-repeat="column in model.columns" value="{{column}}">{{column}}</option>
+                    </select>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4">
+                    <div ng-show="grouping.attribute" class="btn-group btn-group-justified">
+                        <a href="#" class="btn btn-default" ng-class="{active: grouping.strategy == attributeGroupingStrategies.split}"
+                           ng-click="grouping.strategy = attributeGroupingStrategies.split">split on attribute</a>
+                        <a href="#" class="btn btn-default" ng-class="{active: grouping.strategy == attributeGroupingStrategies.balance}"
+                           ng-click="grouping.strategy = attributeGroupingStrategies.balance">balance attribute</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

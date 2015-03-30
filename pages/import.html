@@ -1,20 +1,40 @@
 <div class="row">
-    <div class="col-md-12">
-        <input type="file" class="files" name="files[]" multiple fileread="files"/>
-        <div ng-repeat="file in files">{{file.name}}</div>
-        <div ng-show="files.length > 0">
-            Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+    <div class="col-md-4 col-md-offset-3">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse <input type="file" class="files form-control" name="files[]" multiple fileread="files"/>
+                </span>
+            </span>
         </div>
-        <button ng-click="import()">Import</button>
-
-        <table ng-show="model.data.length > 0">
-            <tr>
-                <th ng-repeat="column in model.columns">{{column}}</th>
-            </tr>
-            <tr ng-repeat="row in model.data">
-                <td ng-repeat="cell in row">{{cell}}</td>
-            </tr>
-        </table>
+        <input type="text" class="form-control" ng-bind="files">
+        <!--<div ng-repeat="file in files">{{file.name}}</div>-->
+    </div>
+    <div class="col-md-2">
+        <span ng-show="files.length > 0">
+            Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+        </span>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-default" ng-click="import()">Import</button>
+    </div>
+</div>
+<br/><br/>
+<div class="row">
+    <div class="col-md-12">
+        <div id="group-panel" class="panel panel-default">
+            <div class="panel-footer">
+                <h3>{{file.name}} Contents</h3>
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th ng-repeat="header in model.columns">{{header}}</th>
+                    </tr>
+                    <tr ng-repeat="row in model.data">
+                        <td ng-repeat="cell in row">{{cell}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row bottom-nav">
