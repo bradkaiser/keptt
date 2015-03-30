@@ -18,6 +18,7 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
 
                     if ($scope.hasHeader) {
                         $scope.model.columns = fileContents.shift();
+			fileContents.splice(fileContents.length - 1, 1);
                     } else {
                         $scope.model.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
                     }
