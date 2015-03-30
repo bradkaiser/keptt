@@ -51,9 +51,10 @@ app.factory('dataService', ['_', function(_) {
 		}
 	}
 	
-	var groups = {};
+	var groups = [];
         var gr = "Group ";
         for(i = 1; i <= numberOfGroups; i++) {
+		var group = {};
         	var members = [];
                 for(j = 0; j < sortedData.length; j++) {
 
@@ -62,11 +63,12 @@ app.factory('dataService', ['_', function(_) {
                                 members.push(sortedData[j]);
                         }
                 }
-                groups[gr.concat(i.toString())] = members;      
+		group["name"] = gr.concat(i.toString());
+		group["items"] = members;
+		groups.push(group);
         }
 
 	console.log(groups);	
-	
 	return groups;
     };
     return service;
