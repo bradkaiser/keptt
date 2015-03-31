@@ -32,8 +32,9 @@
                         <tr>
                             <th ng-repeat="header in model.columns">{{header}}</th>
                         </tr>
-                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
-                            <td ng-repeat="(key, val) in item">{{val}}</td>
+                        <!--<tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">-->
+                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-repeat="column in model.columns" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
+                            <td ng-repeat="column in model.columns">{{item[column]}}</td>
                         </tr>
                     </table>
                 </div>

@@ -31,7 +31,7 @@
                         <th ng-repeat="header in model.columns">{{header}}</th>
                     </tr>
                     <tr ng-repeat="row in model.data">
-                        <td ng-repeat="cell in row">{{cell}}</td>
+                        <td ng-repeat="column in model.columns">{{row[column]}}</td>
                     </tr>
                 </table>
             </div>
