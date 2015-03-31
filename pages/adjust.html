@@ -56,7 +56,9 @@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-default" ng-click="back()">Back</button>
-        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
+        <!--<button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>-->
+        <!--change to do the export call same as button up top-->
+        <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[2] == 0}" ng-click="next()">Export</button>
     </div>
 </div>
 

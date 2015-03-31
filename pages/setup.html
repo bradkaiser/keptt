@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-12">
-        <button ng-click="test()">test</button>
         <form id="rule-form">
             <h1>Grouping</h1>
             <div class="row">
@@ -39,7 +38,7 @@
             <br/><br/>
             <div class="row">
                 <div class="col-md-offset-2 col-md-4">
-                    <div ng-show="grouping.attribute" class="btn-group btn-group-justified">
+                    <div ng-show="grouping.attribute" ng-click="availableTabs[2]=1" class="btn-group btn-group-justified">
                         <a href="#" class="btn btn-default" ng-class="{active: grouping.strategy == attributeGroupingStrategies.split}"
                            ng-click="grouping.strategy = attributeGroupingStrategies.split">split on attribute</a>
                         <a href="#" class="btn btn-default" ng-class="{active: grouping.strategy == attributeGroupingStrategies.balance}"
@@ -53,6 +52,6 @@
 <div class="row bottom-nav">
     <div class="col-md-12">
         <button type="button" class="btn btn-default" ng-click="back()">Back</button>
-        <button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>
+        <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[2] == 0}" ng-click="next()">Next</button>
     </div>
 </div>

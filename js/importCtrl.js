@@ -32,13 +32,10 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
             fileReader.readAsText(file);
         });
 
-        $scope.files = [];
+        //$scope.files = [];
+
+        //max next tab possible.
+        $scope.availableTabs[1] = 1;
     };
-
-
-    $scope.next = function() {
-        $scope.selected.tab++;
-    };
-
 
 }]);

@@ -6,14 +6,18 @@ app.run(function($rootScope) {
 });
 
 app.controller('MainCtrl', ['$scope', function($scope) {
-    $scope.selected = {'tab':  1};
+    $scope.selected = {'tab':  0};
     $scope.model = { data: [], columns: [] };
+    $scope.availableTabs = [1,0,0,0];
 
     $scope.back = function() {
         $scope.selected.tab--;
     }
     $scope.next = function() {
-        $scope.selected.tab++;
+        console.log($scope.availableTabs);
+        console.log($scope.availableTabs[$scope.selected.tab + 1]);
+        if($scope.availableTabs[$scope.selected.tab + 1] == 1)
+            $scope.selected.tab++;
     }
 }]);
 
@@ -28,6 +32,7 @@ app.directive("fileread", function() {
                     for (var i = 0; i < changeEvent.target.files.length; i++) {
                         scope.fileread.push(changeEvent.target.files.item(i));
                     }
+                    scope.$parent.import();
                 });
             });
         }
