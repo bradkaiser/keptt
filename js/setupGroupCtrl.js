@@ -25,8 +25,6 @@ angular.module('grouper')
                 }
 
                 $scope.model.groups = dataService.splitGroups($scope.model.data, $scope.grouping.attribute, elementsPerGroup);
-		console.log($scope.model.groups);	
-            
 	    } else if ($scope.grouping.strategy == ags.balance) {
 		var test;
 		console.log($scope.grouping.method);

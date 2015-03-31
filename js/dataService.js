@@ -9,18 +9,13 @@ app.factory('dataService', ['_', function(_) {
     var service = {};
 
     service.splitGroups = function(data, attribute, elementsPerGroup) {
-        console.log("lodash is below");
-        console.log(_);
-        console.log(data);
-        console.log(attribute);
-        console.log(elementsPerGroup);
         return _(data)
                 .sortByAll([attribute])
                 .chunk(elementsPerGroup)
-                .transform(function(result,group, index) {
+				.map(function (value, index) {
                     var groupName = 'Group ' + index;
-                    result[groupName] = group;
-                }, {})
+					return {"name": groupName, "items": value};
+                })
                 .value();
     };
     
