@@ -25,8 +25,6 @@ angular.module('grouper')
                 }
 
                 $scope.model.groups = dataService.splitGroups($scope.model.data, $scope.grouping.attribute, elementsPerGroup);
-		console.log($scope.model.groups);	
-            
 	    } else if ($scope.grouping.strategy == ags.balance) {
 		var test;
 		console.log($scope.grouping.method);
@@ -35,7 +33,10 @@ angular.module('grouper')
 		    $scope.model.groups = dataService.balanceGroups($scope.model.data, $scope.grouping.attribute, $scope.grouping.numberOfGroups);	
 		    console.log($scope.model.groups);	
 		} else {
-			//No Heuristic thought of, right now
+		    var totalGroups = Math.floor($scope.model.data.length / $scope.grouping.groupSize);
+		    $scope.model.groups = dataService.balanceGroups($scope.model.data, $scope.grouping.attribute, totalGroups);	
+		    
+		    console.log($scope.model.groups);
 		}
             }
             $scope.$parent.next();
