@@ -29,7 +29,7 @@
                 <h4 ng-show="files.length > 0">{{files[0].name}} contents</h4>
                 <table ng-show="files.length > 0" class="table table-bordered table-hover">
                     <tr>
-                        <th ng-repeat="header in model.columns">{{header}}</th>
+                        <th ng-repeat="(index, header)  in model.columns">{{header}} <input type="checkbox" ng-model="model.headers[index]" /></th>
                     </tr>
                     <tr ng-repeat="row in model.data">
                         <td ng-repeat="column in model.columns">{{row[column]}}</td>

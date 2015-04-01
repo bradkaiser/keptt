@@ -26,13 +26,15 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
                     console.log(fileContents);
                     $scope.model.data = _.map(fileContents, convertDatumArrayToObject);
                     console.log($scope.model.data);
+
+                    for(var i = 0; i < $scope.model.columns.length; i++) {
+                        $scope.model.headers[i] = false;
+                    }
                 });
             };
 
             fileReader.readAsText(file);
         });
-
-        //$scope.files = [];
 
         //max next tab possible.
         $scope.availableTabs[1] = 1;

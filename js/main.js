@@ -7,7 +7,7 @@ app.run(function($rootScope) {
 
 app.controller('MainCtrl', ['$scope', '$timeout', '_', function($scope, $timeout, _) {
     $scope.selected = {'tab':  0};
-    $scope.model = { data: [], columns: [] };
+    $scope.model = { data: [], columns: [], headers: [] };
     $scope.availableTabs = [1,0,0,0];
     $scope.direction = 'forward';
 	$scope.exportButtonType = "btn-primary";
