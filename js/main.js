@@ -23,6 +23,15 @@ app.controller('MainCtrl', ['$scope', function($scope) {
     $scope.export = function() {
 	var groups = $scope.model.groups;
 	var fileOutput = "";
+	console.log($scope.model.columns);
+    	//console.log($scope.hasHeader); --> Returning undefined, don't know why?
+
+	if (typeof $scope.model.columns != "undefined" && $scope.model.columns != null && $scope.model.columns.length > 0) {
+	    for(i = 0; i < $scope.model.columns.length; i++) {
+		fileOutput = fileOutput.concat($scope.model.columns[i], ",");
+	    }
+	    fileOutput = fileOutput.concat("Group\n");
+	}
 	
 	for(i = 0; i < groups.length; i++) {
 	    
