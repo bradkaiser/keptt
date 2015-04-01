@@ -24,17 +24,18 @@
                 <div class="row top-nav">
                     <div class="col-md-9">
                         <div class="btn-group btn-group-lg btn-group-justified">
-                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 0, disabled: availableTabs[0] == 0}" ng-click="moveTo(0)">Import</a>
-                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1, disabled: availableTabs[1] == 0}" ng-click="moveTo(1)">Setup Groups</a>
-                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2, disabled: availableTabs[2] == 0}" ng-click="moveTo(2)">Adjust</a>
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 0, disabled: availableTabs[0] == 0}" ng-click="moveTo(0)">1. Import</a>
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1, disabled: availableTabs[1] == 0}" ng-click="moveTo(1)">2. Setup Groups</a>
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2, disabled: availableTabs[2] == 0}" ng-click="moveTo(2)">3. Adjust</a>
                             <!--<a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
                         </div>
                     </div>
                     <div class="col-md-3">
                         <a href="#" class="btn btn-lg {{exportButtonType}} btn-block pulse"
-                           ng-class="{active: selected.tab == 3, disabled: availableTabs[3] == 0}" ng-click="export()">{{exportButtonText}}</a>
+                           ng-class="{active: selected.tab == 3, disabled: availableTabs[3] == 0}" ng-click="export()">4. {{exportButtonText}}</a>
                     </div>
                 </div>
+
                 <div class="tab-data slide" ng-controller="ImportCtrl" ng-show="selected.tab == 0" ng-class="direction">
                     <ng-include src="'pages/import.html'"></ng-include>
                 </div>

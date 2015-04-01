@@ -20,6 +20,11 @@
     border-top: none
 }
 
+#group-panel h4 {
+    font-style: normal;
+    font-weight: normal;
+}
+
 #rule-form {
     min-height:350px;
 }

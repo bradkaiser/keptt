@@ -25,8 +25,9 @@
     <div class="col-md-12">
         <div id="group-panel" class="panel panel-default">
             <div class="panel-footer">
-                <h3>{{files[0].name}} Contents</h3>
-                <table class="table table-bordered table-hover">
+                <h4 ng-show="files.length == 0"><center>Click the browse button above to upload your .CSV file</center></h4>
+                <h4 ng-show="files.length > 0">{{files[0].name}} contents</h4>
+                <table ng-show="files.length > 0" class="table table-bordered table-hover">
                     <tr>
                         <th ng-repeat="header in model.columns">{{header}}</th>
                     </tr>
