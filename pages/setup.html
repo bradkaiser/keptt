@@ -52,6 +52,6 @@
 <div class="row bottom-nav">
     <div class="col-md-12">
         <button type="button" class="btn btn-default" ng-click="back()">Back</button>
-        <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[2] == 0}" ng-click="next()">Next</button>
+        <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[2] == 0}" ng-click="next(); availableTabs[3] = 1">Next</button>
     </div>
 </div>
