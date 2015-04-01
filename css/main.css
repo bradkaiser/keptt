@@ -120,7 +120,7 @@ allow tabs to sit on top of each other by making them absolutely positioned
 }
 
 .tab-data {
-    width: 100%;
+    width: 97.2%;
 }
 
 /* define forward and backward sliding */

@@ -31,7 +31,8 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <a href="#" class="btn btn-lg btn-primary btn-block pulse" ng-class="{active: selected.tab == 3, disabled: availableTabs[3] == 0}" ng-click="export()">Export</a>
+                        <a href="#" class="btn btn-lg {{exportButtonType}} btn-block pulse"
+                           ng-class="{active: selected.tab == 3, disabled: availableTabs[3] == 0}" ng-click="export()">{{exportButtonText}}</a>
                     </div>
                 </div>
                 <div class="tab-data slide" ng-controller="ImportCtrl" ng-show="selected.tab == 0" ng-class="direction">
@@ -45,9 +46,7 @@
                 <div class="tab-data slide" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 2" ng-class="direction">
                     <ng-include src="'pages/adjust.html'"></ng-include>
                 </div>
-                <div class="tab-data slide" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 3" ng-class="direction">
-                    <ng-include src="'pages/export.html'"></ng-include>
-                </div>
+                <div class="tab-data slide" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 3"></div>
             </div>
         </div>
     </body>
