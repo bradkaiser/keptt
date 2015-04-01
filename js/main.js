@@ -19,6 +19,27 @@ app.controller('MainCtrl', ['$scope', function($scope) {
         if($scope.availableTabs[$scope.selected.tab + 1] == 1)
             $scope.selected.tab++;
     }
+    
+    $scope.export = function() {
+	var groups = $scope.model.groups;
+	var fileOutput = "";
+	
+	for(i = 0; i < groups.length; i++) {
+	    
+	    var items = groups[i].items;
+	    for(j = 0; j < items.length; j++) {
+		for(var key in items[j]) {
+		    if (key != "$$hashKey") {
+			fileOutput = fileOutput.concat(items[j][key]);
+			fileOutput = fileOutput.concat(",");
+		    }
+		}
+		fileOutput = fileOutput.concat(groups[i].name);
+		fileOutput = fileOutput.concat("\n");
+	    }	
+	}
+	console.log(fileOutput);	
+    }
 }]);
 
 app.directive("fileread", function() {
