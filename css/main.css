@@ -170,3 +170,20 @@ allow tabs to sit on top of each other by making them absolutely positioned
     -webkit-transform: translateX(0px);
 }
 
+/** define pulse animation **/
+@keyframes pulse {
+    0% { transform: scale(1,1); }
+    50% { transform: scale(1.2,1.2); }
+    100% { transform: scale(1,1); }
+}
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1,1); }
+    50% { -webkit-transform: scale(1.1,1.1); }
+    100% { -webkit-transform: scale(1,1); }
+}
+
+.pulse:not(.disabled) {
+    animation: pulse .4s ease-in-out;
+    -webkit-animation: pulse .4s ease-in-out;
+}
