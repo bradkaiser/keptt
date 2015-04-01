@@ -107,3 +107,83 @@
     position: relative;
     z-index: 2;
 }
+
+/*
+allow tabs to sit on top of each other by making them absolutely positioned
+*/
+.container {
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+}
+
+.tab-data {
+    width: 100%;
+}
+
+/* define forward and backward sliding */
+.slide.ng-hide-add.ng-hide-add-active,
+.slide.ng-hide-remove.ng-hide-remove-active {
+    transition: all ease-in-out .4s;
+    -webkit-transition: all ease-in-out .4s;
+}
+
+.slide.forward.ng-hide-add {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+.slide.forward.ng-hide-add-active {
+    transform: translateX(-2000px);
+    -webkit-transform: translateX(-2000px);
+}
+
+.slide.forward.ng-hide-remove {
+    transform: translateX(2000px);
+    -webkit-transform: translateX(2000px);
+}
+
+.slide.forward.ng-hide-remove-active {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+.slide.backward.ng-hide-add {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+.slide.backward.ng-hide-add-active {
+    transform: translateX(2000px);
+    -webkit-transform: translateX(2000px);
+}
+
+.slide.backward.ng-hide-remove {
+    transform: translateX(-2000px);
+    -webkit-transform: translateX(-2000px);
+}
+
+.slide.backward.ng-hide-remove-active {
+    transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+/** define pulse animation **/
+@keyframes pulse {
+    0% { transform: scale(1,1); }
+    50% { transform: scale(1.2,1.2); }
+    100% { transform: scale(1,1); }
+}
+
+@-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1,1); }
+    50% { -webkit-transform: scale(1.1,1.1); }
+    100% { -webkit-transform: scale(1,1); }
+}
+
+.pulse:not(.disabled) {
+    animation: pulse .4s ease-in-out;
+    -webkit-animation: pulse .4s ease-in-out;
+}
