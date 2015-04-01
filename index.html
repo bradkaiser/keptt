@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+        <script src="//code.angularjs.org/1.3.15/angular-animate.js"></script>
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.js"></script>
         <script src="lib/ngDraggable.js"></script>
         <script src="js/main.js"></script>
@@ -19,32 +20,34 @@
     </head>
     <body ng-controller="MainCtrl">
         <div class="container">
-            <div class="row top-nav">
-                <div class="col-md-9">
-                    <div class="btn-group btn-group-lg btn-group-justified">
-                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 0, disabled: availableTabs[0] == 0}" ng-click="selected.tab = 0">Import</a>
-                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1, disabled: availableTabs[1] == 0}" ng-click="selected.tab = 1">Setup Groups</a>
-                        <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2, disabled: availableTabs[2] == 0}" ng-click="selected.tab = 2">Adjust</a>
-                        <!--<a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
+            <div>
+                <div class="row top-nav">
+                    <div class="col-md-9">
+                        <div class="btn-group btn-group-lg btn-group-justified">
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 0, disabled: availableTabs[0] == 0}" ng-click="moveTo(0)">Import</a>
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 1, disabled: availableTabs[1] == 0}" ng-click="moveTo(1)">Setup Groups</a>
+                            <a href="#" class="btn btn-default" ng-class="{active: selected.tab == 2, disabled: availableTabs[2] == 0}" ng-click="moveTo(2)">Adjust</a>
+                            <!--<a href="#" class="btn btn-default" ng-class="{active: selected.tab == 4}" ng-click="selected.tab = 4">Export</a>-->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" class="btn btn-lg btn-primary btn-block" ng-class="{active: selected.tab == 3, disabled: availableTabs[2] == 0}" ng-click="export()">Export</a>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <a href="#" class="btn btn-lg btn-primary btn-block" ng-class="{active: selected.tab == 3, disabled: availableTabs[2] == 0}" ng-click="export()">Export</a>
+                <div class="tab-data slide" ng-controller="ImportCtrl" ng-show="selected.tab == 0" ng-class="direction">
+                    <ng-include src="'pages/import.html'"></ng-include>
                 </div>
-            </div>
-            <div class="tab-data" ng-controller="ImportCtrl" ng-show="selected.tab == 0">
-                <ng-include src="'pages/import.html'"></ng-include>
-            </div>
 
-            <div class="tab-data"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 1">
-                <ng-include src="'pages/setup.html'"></ng-include>
-            </div>
+                <div class="tab-data slide"  ng-controller="SetupGroupCtrl" ng-show="selected.tab == 1" ng-class="direction">
+                    <ng-include src="'pages/setup.html'"></ng-include>
+                </div>
 
-            <div class="tab-data" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 2">
-                <ng-include src="'pages/adjust.html'"></ng-include>
-            </div>
-            <div class="tab-data" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 3">
-                <ng-include src="'pages/export.html'"></ng-include>
+                <div class="tab-data slide" ng-controller="AdjustGroupCtrl" ng-show="selected.tab == 2" ng-class="direction">
+                    <ng-include src="'pages/adjust.html'"></ng-include>
+                </div>
+                <div class="tab-data slide" ng-controller="ExportGroupCtrl" ng-show="selected.tab == 3" ng-class="direction">
+                    <ng-include src="'pages/export.html'"></ng-include>
+                </div>
             </div>
         </div>
     </body>
