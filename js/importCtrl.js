@@ -2,11 +2,8 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
 
     $scope.files = [];
     $scope.hasHeader = true;
-    $scope.includemodel = [];
-    $scope.includedata = [];
-
-    $scope.primaryKeymodel = [];
-    $scope.primaryKeydata = [];
+    $scope.includesData = [];
+    $scope.primaryKeyData = [];
 
     var convertDatumArrayToObject = function(datum) {
         return _.zipObject($scope.model.columns, datum);
@@ -23,26 +20,28 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
 
                     if ($scope.hasHeader) {
                         $scope.model.columns = fileContents.shift();
-			fileContents.splice(fileContents.length - 1, 1);
+			            fileContents.splice(fileContents.length - 1, 1);
                     } else {
-                        $scope.model.columns = _.map(_.range(fileContents.length), function(i) { return "Col" + (i + 1); });
+                        $scope.model.columns = _.map(_.range(fileContents.length-1), function(i) { return "Column " + (i + 1); });
                     }
 
-                    console.log(fileContents);
                     $scope.model.data = _.map(fileContents, convertDatumArrayToObject);
-                    console.log($scope.model.data);
 
                     for(var i = 0; i < $scope.model.columns.length; i++) {
-                        //$scope.model.includes[i] = true;
-                        $scope.includedata[i] = { id: i, label: $scope.model.columns[i]};
-                        $scope.primaryKeydata[i] = { id: $scope.model.columns[i], label: $scope.model.columns[i]};
+                        $scope.includesData[i] = { id: i, label: $scope.model.columns[i]};
+                        $scope.primaryKeyData[i] = { id: $scope.model.columns[i], label: $scope.model.columns[i]};
+
+                        $scope.model.includes = $scope.includesData;            //select
+                        if(i==0) {
+                            $scope.model.keys[0] = { id: $scope.model.columns[0], label: $scope.model.columns[0]};  //select first
+                            console.log($scope.model.columns[0]);
+                        }
                     }                
                 });
             };
 
             fileReader.readAsText(file);
         });
-
         //max next tab possible.
         $scope.availableTabs[1] = 1;
     };

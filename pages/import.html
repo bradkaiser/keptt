@@ -8,36 +8,6 @@
             </span>
             <input type="text" class="form-control" ng-bind="files">
         </div>
-        <!--<div ng-repeat="file in files">{{file.name}}</div>-->
-    </div>
-
-    <!--<div class="col-md-2">-->
-    <!--<button class="btn btn-default" ng-click="import()">Import</button>-->
-    <!--</div>-->
-</div>
-<div class="row">
-    <div class="col-md-12" ng-show="files.length > 0">
-        <div class="panel panel-default" style="margin-top:30px">
-            <div class="panel-footer">
-                <table ng-show="files.length > 0" class="table table-bordered table-hover">
-                    <tr>
-                        <td>
-                            <span>
-                                Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
-                            </span>
-                        </td>
-                        <td>
-                            Includes:
-                            <span ng-dropdown-multiselect="" options="includedata" selected-model="model.includes"></span>
-                        </td>
-                        <td>
-                            Primary Key:
-                            <span ng-dropdown-multiselect="" options="primaryKeydata" selected-model="model.keys"></span>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
     </div>
 </div>
 <br /><br />
@@ -46,15 +16,32 @@
         <div id="group-panel" class="panel panel-default">
             <div class="panel-footer">
                 <h4 ng-show="files.length == 0"><center>Click the browse button above to upload your .CSV file</center></h4>
-                <h4 ng-show="files.length > 0">{{files[0].name}} contents</h4>
-                <table ng-show="files.length > 0" class="table table-bordered table-hover">
-                    <tr>
-                        <th ng-repeat="(index, header)  in model.columns">{{header}}</th>
-                    </tr>
-                    <tr ng-repeat="row in model.data">
-                        <td ng-repeat="column in model.columns">{{row[column]}}</td>
-                    </tr>
-                </table>
+                <h4 ng-show="files.length > 0">Import Settings</h4>
+                <div ng-show="files.length > 0">
+                    <div class="row">
+                        <div class="col-md-4">
+                            Does the file have a header row? &nbsp;&nbsp;<input type="checkbox" ng-model="$parent.hasHeader" ng-click="import()">
+                        </div>
+                        <div class="col-md-4">
+                            Includes:
+                            <span ng-dropdown-multiselect="" options="includesData" selected-model="model.includes"></span>
+                        </div>
+                        <div class="col-md-4">
+                            Primary Key:
+                            <span ng-dropdown-multiselect="" class="" options="primaryKeyData" selected-model="model.keys"></span>
+                        </div>
+                    </div>
+                    <br/><br/>
+                    <h4 >{{files[0].name}} contents</h4>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th ng-repeat="(index, header) in model.columns">{{header}}</th>
+                        </tr>
+                        <tr ng-repeat="row in model.data">
+                            <td ng-repeat="column in model.columns">{{row[column]}}</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
