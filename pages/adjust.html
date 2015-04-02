@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-default" ng-class="{active: layout == 0}" ng-click="layout = 0">
                 <i class="fa fa-align-justify"></i>
             </button>
-            <button type="button" class="btn btn-default" ng-class="{active: layout == 1}" ng-click="layout = 1; console.log(model.groups);">
+            <button type="button" class="btn btn-default" ng-class="{active: layout == 1}" ng-click="layout = 1;">
                 <i class="fa fa-trello"></i>
             </button>
         </div>
@@ -30,11 +30,11 @@
                     <h3>Group Members:</h3>
                     <table class="table table-bordered table-hover">
                         <tr>
-                            <th ng-repeat="header in model.columns">{{header}}</th>
+                            <th ng-repeat="header in model.includes">{{model.columns[header.id]}}</th>
                         </tr>
                         <!--<tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">-->
-                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-repeat="column in model.columns" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
-                            <td ng-repeat="column in model.columns">{{item[column]}}</td>
+                        <tr ng-repeat="(iIndex, item) in model.groups[selectedGroup].items" ng-drag="true" ng-drag-data="selectedGroup+':'+iIndex">
+                            <td ng-repeat="column in model.includes">{{item[model.columns[column.id]]}}</td>
                         </tr>
                     </table>
                 </div>
@@ -48,7 +48,7 @@
             <table class="table table-bordered table-hover" ng-drop="true" ng-drop-success="onDropComplete($data, $event, gIndex)">
                 <th>{{group.name}}</th>
                 <tr ng-repeat="(iIndex, item) in group.items" ng-drag="true" ng-drag-data="gIndex+':'+iIndex">
-                    <td>{{item[model.columns[0]]}}</td>
+                    <td>{{getKeyCombo(item)}}</td>
                 </tr>
             </table>
         </div>
@@ -57,10 +57,6 @@
 <div class="row">
     <div class="col-md-12">
         <button type="button" class="btn btn-default" ng-click="back()">Back</button>
-        <!--<button type="button" class="btn btn-default pull-right" ng-click="next()">Next</button>-->
-        <!--change to do the export call same as button up top-->
         <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[2] == 0}" ng-click="export()">Export</button>
     </div>
 </div>
-
-

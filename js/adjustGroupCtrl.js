@@ -12,4 +12,12 @@ angular.module('grouper')
             var item = $scope.model.groups[res[0]].items.splice(res[1], 1)[0];
             $scope.model.groups[gIndex].items.push(item);
         }
+
+        $scope.getKeyCombo = function(arr) {
+            ret = "";
+            angular.forEach($scope.model.keys, function(value, key) {
+                ret += arr[value.id] + " "
+            });
+            return ret;
+        }
 }]);

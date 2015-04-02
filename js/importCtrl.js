@@ -31,7 +31,7 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
                         $scope.includesData[i] = { id: i, label: $scope.model.columns[i]};
                         $scope.primaryKeyData[i] = { id: $scope.model.columns[i], label: $scope.model.columns[i]};
 
-                        $scope.model.includes = $scope.includesData;            //select
+                        $scope.model.includes[i] = { id: i, label: $scope.model.columns[i]};            //select
                         if(i==0) {
                             $scope.model.keys[0] = { id: $scope.model.columns[0], label: $scope.model.columns[0]};  //select first
                             console.log($scope.model.columns[0]);
