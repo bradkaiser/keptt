@@ -13,7 +13,7 @@ app.factory('dataService', ['_', function(_) {
                 .sortByAll([attribute])
                 .chunk(elementsPerGroup)
 				.map(function (value, index) {
-                    var groupName = 'Group ' + index;
+                    var groupName = 'Group ' + (index + 1);
 					return {"name": groupName, "items": value};
                 })
                 .value();

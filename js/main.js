@@ -51,24 +51,22 @@ app.controller('MainCtrl', ['$scope', '$timeout', '_', function($scope, $timeout
 		$timeout(function(){$scope.exportButtonType = "btn-primary"; $scope.exportButtonText = "Export"}, 5000); //reset
 
 		var groups = $scope.model.groups;
+		var includeFields = $scope.model.includes;
 		var fileOutput = "";
 		console.log($scope.model.columns);
-		//console.log($scope.hasHeader); --> Returning undefined, don't know why?
 		
-		if (typeof $scope.model.columns != "undefined" && $scope.model.columns != null && $scope.model.columns.length > 0) {
-			for (i = 0; i < $scope.model.columns.length; i++) {
-				fileOutput = fileOutput.concat($scope.model.columns[i], ",");
-			}
-			fileOutput = fileOutput.concat("Group\n");
+		for(i = 0; i < $scope.model.includes.length; i++) {
+		    fileOutput = fileOutput.concat($scope.model.includes[i]["label"], ",");
 		}
+		fileOutput = fileOutput.concat("Group\n");
 
 		for (i = 0; i < groups.length; i++) {
 
 			var items = groups[i].items;
 			for (j = 0; j < items.length; j++) {
-				for (var key in items[j]) {
-					if (key != "$$hashKey") {
-						fileOutput = fileOutput.concat(items[j][key]);
+				for (k = 0; k < includeFields.length; k++) {
+					if (includeFields[k]["label"] != "$$hashKey") {
+						fileOutput = fileOutput.concat(items[j][includeFields[k]["label"]]);
 						fileOutput = fileOutput.concat(",");
 					}
 				}
@@ -220,9 +218,4 @@ app.directive("fileread", function() {
         }
     };
 });
-
-// Pop up for the page telling the user not to leave
-//window.onbeforeunload = function() {
-//    return "Refreshing or leaving this page will result in all current data being lost.";
-//}
 

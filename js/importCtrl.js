@@ -23,6 +23,7 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
 			            fileContents.splice(fileContents.length - 1, 1);
                     } else {
                         $scope.model.columns = _.map(_.range(fileContents[0].length), function(i) { return "Column " + (i + 1); });
+			fileContents.splice(fileContents.length - 1, 1);
                     }
 
                     $scope.model.data = _.map(fileContents, convertDatumArrayToObject);
