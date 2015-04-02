@@ -54,7 +54,7 @@ app.controller('MainCtrl', ['$scope', '$timeout', '_', function($scope, $timeout
 		var fileOutput = "";
 		console.log($scope.model.columns);
 		//console.log($scope.hasHeader); --> Returning undefined, don't know why?
-
+		
 		if (typeof $scope.model.columns != "undefined" && $scope.model.columns != null && $scope.model.columns.length > 0) {
 			for (i = 0; i < $scope.model.columns.length; i++) {
 				fileOutput = fileOutput.concat($scope.model.columns[i], ",");
@@ -77,13 +77,6 @@ app.controller('MainCtrl', ['$scope', '$timeout', '_', function($scope, $timeout
 			}
 		}
 		console.log(fileOutput);
-
-		/*
-		 var fileData = new Blob([fileOutput], {type: 'text/plain'});
-
-		 if(textFile !== null) {
-		 window.URL.revokeObjectURL(fileData);
-		 }*/
 		download(fileOutput, "groups.csv", "text/plain");
 	}
 
