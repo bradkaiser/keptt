@@ -3,43 +3,62 @@
         <div class="input-group">
             <span class="input-group-btn">
                 <span class="btn btn-primary btn-file">
-                    Browse <input type="file" class="files form-control" name="files[]" multiple fileread="files"/>
+                    Browse <input type="file" class="files form-control" name="files[]" multiple fileread="files" />
                 </span>
             </span>
             <input type="text" class="form-control" ng-bind="files">
         </div>
-
         <!--<div ng-repeat="file in files">{{file.name}}</div>-->
     </div>
-    <div class="col-md-2">
-        <span ng-show="files.length > 0">
-            Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
-        </span>
-    </div>
+
     <!--<div class="col-md-2">-->
-        <!--<button class="btn btn-default" ng-click="import()">Import</button>-->
+    <!--<button class="btn btn-default" ng-click="import()">Import</button>-->
     <!--</div>-->
 </div>
-<br/><br/>
 <div class="row">
-    <div class="col-md-12">
-        <div id="group-panel" class="panel panel-default">
+    <div class="col-md-12" ng-show="files.length > 0">
+        <div class="panel panel-default" style="margin-top:30px">
             <div class="panel-footer">
-                <h3>{{files[0].name}} Contents</h3>
-                <table class="table table-bordered table-hover">
+                <table style="width:100%">
                     <tr>
-                        <th ng-repeat="(index, header)  in model.columns">{{header}} <input type="checkbox" ng-model="model.headers[index]" /></th>
-                    </tr>
-                    <tr ng-repeat="row in model.data">
-                        <td ng-repeat="column in model.columns">{{row[column]}}</td>
+                        <td>
+                            <span>
+                                Does the file have a header row? <input type="checkbox" ng-model="hasHeader">
+                            </span>
+                        </td>
+                        <td>
+                            Includes:
+                            <span ng-dropdown-multiselect="" options="includedata" selected-model="model.includes"></span>
+                        </td>
+                        <td>
+                            Primary Key:
+                            <span ng-dropdown-multiselect="" options="primaryKeydata" selected-model="model.keys"></span>
+                        </td>
                     </tr>
                 </table>
             </div>
         </div>
     </div>
-</div>
-<div class="row bottom-nav">
-    <div class="col-md-12">
-        <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[1] == 0}" ng-click="next()">Next</i></button>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-12">
+            <div id="group-panel" class="panel panel-default">
+                <div class="panel-footer">
+                    <h3>{{files[0].name}} Contents</h3>
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th ng-repeat="(index, header)  in model.columns">{{header}}</th>
+                        </tr>
+                        <tr ng-repeat="row in model.data">
+                            <td ng-repeat="column in model.columns">{{row[column]}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="row bottom-nav">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-default pull-right" ng-class="{disabled: availableTabs[1] == 0}" ng-click="next()">Next</i></button>
+        </div>
+    </div>

@@ -2,6 +2,11 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
 
     $scope.files = [];
     $scope.hasHeader = true;
+    $scope.includemodel = [];
+    $scope.includedata = [];
+
+    $scope.primaryKeymodel = [];
+    $scope.primaryKeydata = [];
 
     var convertDatumArrayToObject = function(datum) {
         return _.zipObject($scope.model.columns, datum);
@@ -28,8 +33,10 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
                     console.log($scope.model.data);
 
                     for(var i = 0; i < $scope.model.columns.length; i++) {
-                        $scope.model.headers[i] = false;
-                    }
+                        //$scope.model.includes[i] = true;
+                        $scope.includedata[i] = { id: i, label: $scope.model.columns[i]};
+                        $scope.primaryKeydata[i] = { id: $scope.model.columns[i], label: $scope.model.columns[i]};
+                    }                
                 });
             };
 
@@ -39,5 +46,4 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
         //max next tab possible.
         $scope.availableTabs[1] = 1;
     };
-
 }]);
