@@ -1,4 +1,4 @@
-var app = angular.module('grouper', ['ui.bootstrap', 'data', 'ngDraggable', 'ngAnimate']);
+var app = angular.module('grouper', ['ui.bootstrap', 'data', 'ngDraggable', 'ngAnimate', 'angularjs-dropdown-multiselect']);
 
 app.constant('_', window._);
 app.run(function($rootScope) {
@@ -7,7 +7,7 @@ app.run(function($rootScope) {
 
 app.controller('MainCtrl', ['$scope', '$timeout', '_', function($scope, $timeout, _) {
     $scope.selected = {'tab':  0};
-    $scope.model = { data: [], columns: [], headers: [] };
+    $scope.model = { data: [], columns: [], includes: [], keys: [] };
     $scope.availableTabs = [1,0,0,0];
     $scope.direction = 'forward';
 	$scope.exportButtonType = "btn-primary";
