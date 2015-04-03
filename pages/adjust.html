@@ -25,9 +25,9 @@
         <div class="col-md-10">
             <div id="group-panel" class="panel panel-default">
                 <div class="panel-footer">
-                    <h3>Group Name:</h3>
-                    <input class="form-control" type="text" ng-model="model.groups[selectedGroup].name" />
-                    <h3>Group Members:</h3>
+                    <h4>Group Name:</h4>
+                    <input class="form-control" type="text" ng-model="model.groups[selectedGroup].name" /><br/>
+                    <h4>Group Members:</h4>
                     <table class="table table-bordered table-hover">
                         <tr>
                             <th ng-repeat="header in model.includes">{{model.columns[header.id]}}</th>
