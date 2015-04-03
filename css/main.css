@@ -19,6 +19,7 @@
 #group-panel {
     max-height: 400px;
     overflow: scroll;
+}
 
 #group-panel table {
     background: white;
