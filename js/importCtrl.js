@@ -14,7 +14,7 @@ angular.module('grouper').controller('ImportCtrl', ['$scope', '_', 'dataService'
             var fileReader = new FileReader();
             fileReader.onload = function(e) {
                 $scope.$apply(function() {
-                    var fileContents = _(fileReader.result.split("\n"))
+                    var fileContents = _(fileReader.result.split(/\r?\n/))
                                     .map(function(line) { return line.split(",") })
                                     .value();
 
