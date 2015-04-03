@@ -23,11 +23,17 @@
                             Does the file have a header row? &nbsp;&nbsp;<input type="checkbox" ng-model="$parent.hasHeader" ng-click="import()">
                         </div>
                         <div class="col-md-4">
-                            Includes:
+                            <span tooltip="Check any columns you want to include in the final output. Unchecked columns will be ignored." tooltip-placement="bottom" tooltip-animation="false" tooltip-trigger>
+                            Include Columns
+                            <i class="fa fa-question-circle"></i>: 
+                            </span>
                             <span ng-dropdown-multiselect="" options="includesData" selected-model="model.includes"></span>
                         </div>
-                        <div class="col-md-4">
-                            Primary Key:
+                        <div class="col-md-4" >
+                            <span tooltip="Checked columns will be used to identify individuals in this app. For example, you might pick a first name and a last name column." tooltip-placement="bottom" tooltip-animation="false" tooltip-trigger>
+                                Identifying Columns
+                                <i class="fa fa-question-circle"></i>: 
+                            </span>
                             <span ng-dropdown-multiselect="" class="" options="primaryKeyData" selected-model="model.keys"></span>
                         </div>
                     </div>
